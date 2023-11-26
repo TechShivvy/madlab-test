@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -35,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getIntent().getBooleanExtra("notificationClicked", false)) {
+            Log.d("MainActivity", "Notification Clicked");
+            mp.stop();
+        }
+
         btn = findViewById(R.id.button);
         timePicker = findViewById(R.id.timePicker);
         toggleButton = findViewById(R.id.toggleButton);
@@ -56,15 +62,16 @@ public class MainActivity extends AppCompatActivity {
                     alarmTime.set(Calendar.MINUTE,timePicker.getMinute());
                     alarmTime.set(Calendar.SECOND,0);
 
-                    Timer timer  = new Timer();
-                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    pendingIntent = PendingIntent.getActivity(MainActivity.this,0,intent,PendingIntent.FLAG_IMMUTABLE);
-
 //                    long t1 = alarmTime.getTime().getTime();
 //                    long t2 = System.currentTimeMillis();
                     Calendar currentTime = Calendar.getInstance();
 
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra("notificationClicked", true);
+                    pendingIntent = PendingIntent.getActivity(MainActivity.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    Timer timer  = new Timer();
                     timer.scheduleAtFixedRate(new Notify(),alarmTime.getTimeInMillis()-currentTime.getTimeInMillis(),24*60*60*1000);
                 }else{
                     mp = MediaPlayer.create(MainActivity.this, Settings.System.DEFAULT_RINGTONE_URI);
@@ -96,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     .setContentText(text)
                     .setSubText(subtext)
                     .setChannelId(CHANNEL_ID)
+                    .setContentIntent(pendingIntent)
                     .build();
             nm.createNotificationChannel(new NotificationChannel(CHANNEL_ID, "New Channel", NotificationManager.IMPORTANCE_HIGH));
         } else {
@@ -104,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     .setContentTitle(title)
                     .setContentText(text)
                     .setSubText(subtext)
+                    .setContentIntent(pendingIntent)
                     .build();
         }
         nm.notify(1, notification);
