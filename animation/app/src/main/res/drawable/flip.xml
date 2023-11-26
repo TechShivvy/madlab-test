@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Front layer with color -->
+    <item android:id="@+id/front_layer">
+        <shape android:shape="rectangle">
+            <solid android:color="#7789E4" /> <!-- Set the front color -->
+        </shape>
+    </item>
+</layer-list>

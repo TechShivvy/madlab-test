@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/readFileName"
+        android:layout_width="222dp"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:hint="Enter File name"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/readDisplay"
+        android:layout_width="206dp"
+        android:layout_height="76dp" />
+
+    <Button
+        android:id="@+id/readButton"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Read" />
+
+    <EditText
+        android:id="@+id/writeFileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Enter file name"/>
+
+    <EditText
+        android:id="@+id/writeDisplay"
+        android:layout_width="224dp"
+        android:layout_height="65dp"
+        android:hint="Enter File Content"
+        />
+
+    <Button
+        android:id="@+id/writeButton"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:text="Write" />
+</LinearLayout>

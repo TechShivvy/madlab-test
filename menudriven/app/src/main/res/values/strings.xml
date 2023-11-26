@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">menu-driven</string>
+    <string name="item1">this is india</string>
+    <string name="item2">2</string>
+    <string name="item3" >3</string>
+    <string name="subitem1">4\n</string>
+    <string name="subitem2">5</string>
+    <string name="canada">6</string>
+    <string name="uk">7</string>
+</resources>
