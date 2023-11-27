@@ -116,5 +116,18 @@ public class MainActivity extends AppCompatActivity {
                     .build();
         }
         nm.notify(1, notification);
+
+//        NotificationManager manager = getSystemService(NotificationManager.class);
+//        NotificationChannel channel = new NotificationChannel("123", "Notify", NotificationManager.IMPORTANCE_DEFAULT);
+//        manager.createNotificationChannel(channel);
+//
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "123");
+//        builder.setSmallIcon(R.drawable.ic_launcher_foreground).setContentTitle("sadasda").setContentText("Asdas").setAutoCancel(true);
+//
+//        NotificationManagerCompat nm = NotificationManagerCompat.from(this);
+//        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+//            return;
+//        }
+//        nm.notify(1, builder.build());
     }
 }

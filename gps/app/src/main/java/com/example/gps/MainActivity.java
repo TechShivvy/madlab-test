@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     try {
                         List<Address> address = geocoder.getFromLocationName(locationName, 1);
-                        outputLatitude.setText("Latitude: " + String.valueOf((float) address.get(0).getLatitude()));
-                        outputLongitude.setText("Longitude: " + String.valueOf((float) address.get(0).getLongitude()));
+                        outputLatitude.setText("Latitude: " + String.valueOf(address.get(0).getLatitude()));
+                        outputLongitude.setText("Longitude: " + String.valueOf(address.get(0).getLongitude()));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

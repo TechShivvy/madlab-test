@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private void startMoveThread() {
         new Thread(new Runnable() {
             @Override
